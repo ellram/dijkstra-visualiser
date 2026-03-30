@@ -1,0 +1,6 @@
+Grensesnitt som lar brukeren taste inn to noder med tilhørende vekt på kant, henholdsvis:
+input 1: [node A], [vekt], [node B]
+input 2: [node B], [vekt], [node C]
+input 3: [...]
+
+visualisern vil deretter fremstille grafen med enten matplotlib eller en egen farge vektor.
