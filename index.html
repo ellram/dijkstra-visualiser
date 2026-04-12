@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+
+      #graph {
+        position: relative;
+        width: 600px;
+        height: 400px;
+        border: 1px solid #ccc;
+        margin-top: 20px;
+      }
+
+      .node {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: lightgray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      .visited {
+        background: lightgreen;
+      }
+
+      .edge {
+        position: absolute;
+        height: 2px;
+        background: black;
+        transform-origin: left center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Dijkstra Visualizer (Frontend Only)</h1>
+
+    <button onclick="run()">Start</button>
+
+    <div id="graph"></div>
+
+    <script>
+      // --- GRAPH DATA ---
+      const nodes = {
+        A: { x: 20, y: 180 },
+        B: { x: 100, y: 100 },
+        C: { x: 100, y: 250 },
+        D: { x: 300, y: 250 },
+        E: { x: 300, y: 100 },
+        F: { x: 400, y: 180 }
+      };
+
+      const edges = [
+        ["A", "B"],
+        ["A", "C"],
+        ["A", "F"],
+        ["B", "C"],
+        ["B", "D"],
+        ["C", "D"],
+        ["D", "E"],
+        ["F", "E"],
+        ["B", "E"],
+        ["D", "F"]
+      ];
+
+      // --- DRAW GRAPH ---
+      function drawGraph() {
+        const g = document.getElementById("graph");
+        g.innerHTML = "";
+
+        // edges first
+        edges.forEach(([a, b]) => {
+          const n1 = nodes[a];
+          const n2 = nodes[b];
+
+          const dx = n2.x - n1.x;
+          const dy = n2.y - n1.y;
+          const length = Math.sqrt(dx * dx + dy * dy);
+          const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+          const edge = document.createElement("div");
+          edge.className = "edge";
+          edge.style.width = length + "px";
+          edge.style.left = n1.x + "px";
+          edge.style.top = n1.y + "px";
+          edge.style.transform = `rotate(${angle}deg)`;
+
+          g.appendChild(edge);
+        });
+
+        // nodes
+        Object.keys(nodes).forEach(key => {
+          const n = nodes[key];
+
+          const div = document.createElement("div");
+          div.className = "node";
+          div.id = key;
+          div.style.left = n.x + "px";
+          div.style.top = n.y + "px";
+          div.innerText = key;
+
+          g.appendChild(div);
+        });
+      }
+
+      // --- SIMPLE DIJKSTRA SIMULATION ---
+      async function run() {
+        const order = ["A", "C", "B", "D", "E", "F"]; // fake "Dijkstra order"
+
+        for (let node of order) {
+          await new Promise(r => setTimeout(r, 800));
+          document.getElementById(node).classList.add("visited");
+        }
+      }
+
+      drawGraph();
+    </script>
+  </body>
+</html>
