@@ -1,13 +1,14 @@
 Work in progress
+
 Currently only available as a mock frontend visualizer for a graph (Dijkstra visualizer not implemented yet).
 
 **Run locally (not hosted yet)**
 
 To run the project locally:
-	•	Clone the repository
-	•	Navigate to the cloned folder on your machine
-	•	Ensure Python / Python3 is installed
-	•	Start a local server:
+* Clone the repository
+* Navigate to the cloned folder on your machine
+* Ensure Python / Python3 is installed
+* Start a local server:
 
 python3 -m http.server 8000
 
