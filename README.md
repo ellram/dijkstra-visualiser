@@ -8,13 +8,10 @@ To run the project locally:
 * Clone the repository
 * Navigate to the cloned folder on your machine
 * Ensure Python / Python3 is installed
-* Start a local server:
-
-python3 -m http.server 8000
-
-	•	Open a browser and go to:
-
-http://localhost:8000
+* Start a local server by typing in the terminal:
+  `python3 -m http.server 8000`
+* Open a browser and go to:
+  `http://localhost:8000`
 
 **Commit conventions**
 Use the following prefixes when committing to this project:
