@@ -11,7 +11,7 @@ To run the project locally:
 * Start a local server by typing in the terminal:
   `python3 -m http.server 8000`
 * Open a browser and go to:
-  `http://localhost:8000`
+  http://localhost:8000
 
 **Commit conventions**
 Use the following prefixes when committing to this project:
